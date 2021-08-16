@@ -93,6 +93,8 @@ objects:
     annotations:
       template.openshift.io/expose-uri: postgres://{.spec.clusterIP}:{.spec.ports[?(.name=="${METABASE_SERVICE_NAME}-postgresql")].port}
     name: ${METABASE_SERVICE_NAME}-postgresql
+    labels:
+      app: metabase
   spec:
     ports:
     - name: ${METABASE_SERVICE_NAME}-postgresql
@@ -132,6 +134,7 @@ objects:
       metadata:
         labels:
           name: ${METABASE_SERVICE_NAME}-postgresql
+          app: metabase
       spec:
         containers:
         - name: ${METABASE_SERVICE_NAME}-postgresql
