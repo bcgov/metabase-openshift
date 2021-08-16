@@ -223,7 +223,7 @@ objects:
       spec:
         containers:
         - name: ${METABASE_SERVICE_NAME}
-          image: ${METABASE_IMAGE}
+          image: docker-remote.artifacts.developer.gov.bc.ca/${METABASE_IMAGE}
           imagePullSecrets:
             - name: artifactory-creds
           imagePullPolicy: Always
