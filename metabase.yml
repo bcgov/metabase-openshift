@@ -227,11 +227,11 @@ objects:
         containers:
         resources:
             limits:
-              cpu: 1
-              memory: 4Gi
+              cpu: "1"
+              memory: "4Gi"
             requests:
-              cpu: 500m
-              memory: 2Gi
+              cpu: "500m"
+              memory: "2Gi"
         - name: ${METABASE_SERVICE_NAME}
           image: ${METABASE_IMAGE}
           imagePullPolicy: Always
