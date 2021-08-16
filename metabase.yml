@@ -137,8 +137,6 @@ objects:
         - name: ${METABASE_SERVICE_NAME}-postgresql
           image: ' '
           imagePullPolicy: IfNotPresent
-          imagePullSecrets:
-            - name: artifactory-creds
           env:
           - name: POSTGRESQL_DATABASE
             valueFrom:
@@ -223,7 +221,7 @@ objects:
       spec:
         containers:
         - name: ${METABASE_SERVICE_NAME}
-          image: docker-remote.artifacts.developer.gov.bc.ca/${METABASE_IMAGE}
+          image: ${METABASE_IMAGE}
           imagePullSecrets:
             - name: artifactory-creds
           imagePullPolicy: Always
@@ -304,7 +302,7 @@ parameters:
   required: false
 - name: METABASE_IMAGE
   displayName: Metabase Docker Image
-  value: registry.hub.docker.com/metabase/metabase:latest
+  value: docker-remote.artifacts.developer.gov.bc.ca/metabase/metabase:latest
   description: The metabase docker image to use
   required: true
 - description: Version of PostgreSQL image to be used (9.4, 9.5, 9.6 or latest).
