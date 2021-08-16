@@ -209,8 +209,6 @@ objects:
       service: ${METABASE_SERVICE_NAME}
   spec:
     replicas: 1
-    imagePullSecrets:
-      - name: artifactory-creds
     selector:
       app: metabase
       deploymentconfig: ${METABASE_SERVICE_NAME}
@@ -224,6 +222,8 @@ objects:
           deploymentconfig: ${METABASE_SERVICE_NAME}
           template: metabase
       spec:
+        imagePullSecrets:
+          - name: artifactory-creds
         containers:
         resources:
            limits:
