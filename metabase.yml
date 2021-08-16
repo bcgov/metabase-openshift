@@ -209,6 +209,8 @@ objects:
       service: ${METABASE_SERVICE_NAME}
   spec:
     replicas: 1
+    imagePullSecrets:
+      - name: artifactory-creds
     selector:
       app: metabase
       deploymentconfig: ${METABASE_SERVICE_NAME}
@@ -225,8 +227,6 @@ objects:
         containers:
         - name: ${METABASE_SERVICE_NAME}
           image: ${METABASE_IMAGE}
-          imagePullSecrets:
-            - name: artifactory-creds
           imagePullPolicy: Always
           env:
           - name: MB_DB_TYPE
