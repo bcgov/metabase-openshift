@@ -137,6 +137,8 @@ objects:
         - name: ${METABASE_SERVICE_NAME}-postgresql
           image: ' '
           imagePullPolicy: IfNotPresent
+          imagePullSecrets:
+            - name: artifactory-creds
           env:
           - name: POSTGRESQL_DATABASE
             valueFrom:
@@ -222,6 +224,8 @@ objects:
         containers:
         - name: ${METABASE_SERVICE_NAME}
           image: ${METABASE_IMAGE}
+          imagePullSecrets:
+            - name: artifactory-creds
           imagePullPolicy: Always
           env:
           - name: MB_DB_TYPE
