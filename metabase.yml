@@ -225,6 +225,13 @@ objects:
           template: metabase
       spec:
         containers:
+        resources:
+            limits:
+              cpu: '1'
+              memory: 4Gi
+            requests:
+              cpu: 500m
+              memory: 2Gi
         - name: ${METABASE_SERVICE_NAME}
           image: ${METABASE_IMAGE}
           imagePullPolicy: Always
@@ -250,7 +257,7 @@ objects:
           command:
              - java
           args:
-            - '-Xmx300m'
+            - '-Xmx2048m'
             - '-Xss512k'
             - '-Dfile.encoding=UTF-8'
             - '-Dlogfile.path=target/log'
